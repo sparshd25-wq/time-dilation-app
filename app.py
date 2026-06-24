@@ -111,8 +111,8 @@ def render_home_step() -> None:
         "After that, you will try to reproduce the same duration yourself."
     )
     st.write(
-        "When the reproduction screen appears, press **Start**, wait until you feel "
-        "the same amount of time has passed, then press **Release**."
+        "When the reproduction screen appears, wait until you feel the same amount "
+        "of time has passed, then press **Release**."
     )
     st.info("Please stay focused on the circle and avoid counting seconds.")
 
@@ -147,14 +147,11 @@ def render_reproduction_step() -> None:
     """Step 2: measure the reproduced duration."""
     render_step_header("Step 2 of 3: Reproduce", 2 / 3)
     st.title("Reproduce the duration")
-    st.write("Press **Start**, wait for the same duration you just observed, then press **Release**.")
+    st.write("Wait for the same duration you just observed, then press **Release**.")
 
     if st.session_state.start_time is None:
-        if st.button("Start"):
-            st.session_state.start_time = time.monotonic()
-            st.session_state.end_time = None
-            st.rerun()
-        return
+        st.session_state.start_time = time.monotonic()
+        st.session_state.end_time = None
 
     elapsed = time.monotonic() - st.session_state.start_time
     st.markdown(
