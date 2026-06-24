@@ -124,6 +124,16 @@ def render_home_step() -> None:
 
 def render_focus_step() -> None:
     """Step 1: display the focus circle for seven seconds."""
+    st.markdown(
+        """
+        <style>
+            div.stButton {
+                display: none;
+            }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
     render_step_header("Step 1 of 3: Focus", 1 / 3)
     st.title("Focus on the circle")
     st.markdown('<div class="focus-circle"></div>', unsafe_allow_html=True)
