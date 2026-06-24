@@ -153,12 +153,6 @@ def render_reproduction_step() -> None:
         st.session_state.start_time = time.monotonic()
         st.session_state.end_time = None
 
-    elapsed = time.monotonic() - st.session_state.start_time
-    st.markdown(
-        f'<div class="metric-box"><strong>Timing...</strong><br>{elapsed:.2f} sec</div>',
-        unsafe_allow_html=True,
-    )
-
     if st.button("Release"):
         st.session_state.end_time = time.monotonic()
         st.session_state.reproduced_time = (
